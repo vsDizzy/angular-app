@@ -1,11 +1,14 @@
 {
-  "compilerOptions": {
-    "target": "es6",
-    "module": "es6"
-  },
-  "exclude": [
-    ".git",
-    ".vscode",
-    "node_modules"
-  ]
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "module": "system",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "target": "es6"
+    },
+    "exclude": [
+        ".git",
+        ".vscode",
+        "node_modules"
+    ]
 }

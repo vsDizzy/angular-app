@@ -1,6 +1,8 @@
-'use strict';
+import {Component} from 'angular2/ts/core';
 
-import {bootstrap} from 'angular2/ts/bootstrap';
-bootstrap();
-
-console.log('aaa');
+@Component({ selector: 'my-app', template: 'hello world' })
+export class App {
+  constructor() {
+    console.log('ok');
+  }
+}
