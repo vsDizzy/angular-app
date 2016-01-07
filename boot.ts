@@ -1,3 +1,4 @@
-import {bootstrap} from 'angular2/ts/bootstrap';
+import {bootstrap} from 'angular2/bootstrap';
 import {App} from './app';
+
 bootstrap(App);
