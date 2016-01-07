@@ -1,11 +1,12 @@
 {
     "compilerOptions": {
+        "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "module": "system",
         "moduleResolution": "node",
+        "outDir": "built",
         "sourceMap": true,
-        "target": "es6",
-        "outDir": "built"
+        "target": "es5"
     },
     "exclude": [
         ".git",
