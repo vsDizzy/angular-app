@@ -1,16 +1,12 @@
 {
-    "compilerOptions": {
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "module": "system",
-        "moduleResolution": "node",
-        "outDir": "built",
-        "sourceMap": true,
-        "target": "es5"
-    },
-    "exclude": [
-        ".git",
-        ".vscode",
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "target": "es5"
+  },
+  "exclude": [
+    "node_modules",
+    "typings/browser.d.ts",
+    "typings/browser"
+  ]
 }

@@ -12,13 +12,17 @@
   <script src="node_modules/typescript/lib/typescript.js"></script>
   <script src="node_modules/systemjs/dist/system.js"></script>
 
-  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-  <script src="node_modules/rxjs/bundles/Rx.js"></script>
-  <script src="node_modules/angular2/bundles/angular2.min.js"></script>
+  <script src="node_modules/angular2/bundles/angular2-polyfills.min.js"></script>
+  <script src="node_modules/rxjs/bundles/Rx.min.js"></script>
+  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 
   <script>
     System.config({
       transpiler: 'typescript',
+      typescriptOptions: {
+        emitDecoratorMetadata: true,
+        experimentalDecorators: true
+      },
       packages: {        
         app: {
           format: 'esm',

@@ -1,41 +1,56 @@
-import {Component, EventEmitter} from 'angular2/core';
+import {Component, EventEmitter, OnInit, Pipe, PipeTransform} from 'angular2/core';
+import {Observable} from 'rxjs/Rx';
+import {Service} from './service';
 
-@Component({
-  selector: 'child',
-  template: `
-    <div>
-      counter: {{counter}}
-    </div>
-  `,
-  inputs: ['counter'],
-  outputs: ['changed']
-})
-export class Child {
-  public counter: number;
-  public changed: EventEmitter<any> = new EventEmitter();
+interface Conversation {
+  participants?: Array<any>;
+  url?: string;
+  id?: number;
+  title?: string;
+  hasUnreadMessage?: boolean;
+}
 
-  constructor() {
-    setInterval(() => {
-      this.counter++;
-      this.changed.emit(this);
-    }, 1000);
+@Pipe({ name: 'pipe' })
+class FilterPipe implements PipeTransform {
+  transform(value) {
+    console.log(value);
+    return value;
   }
 }
 
 @Component({
   selector: 'app',
-  directives: [Child],
+  pipes: [FilterPipe],
   template: `
     <div>
-      current: {{current}}
-      <child [counter]="current" (changed)="cc($event)"></child>
+      <span *ngFor="#i of c | async | pipe">
+        {{i}}
+      </span>
+      <br />
+      <span *ngFor="#i of c | async">
+        {{i}}
+      </span>
+      <br />
+      <span *ngFor="#i of c1 | async">
+        {{i}}
+      </span>
     </div>
-  `
+  `,
 })
-export class App {
-  current: number = 3;
+export class App implements OnInit {
+  c: Observable<number[]>;
+  c1: Observable<any>;
+  items;
 
-  cc(evt) {
-    this.current = evt.counter;
+  constructor(private _service: Service) {
+    this.c = _service.observable.share();
+    this.c1 = this.c;
+  }
+
+  ngOnInit() {
+    let c1: Conversation = { hasUnreadMessage: false, title: 'aa' };
+    let c2: Conversation = { hasUnreadMessage: true, title: 'bb' };
+    let c3: Conversation = { hasUnreadMessage: false, title: 'cc' };
+    this.items = Observable.of([c1, c2, c3]);
   }
 }
