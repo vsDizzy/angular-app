@@ -2,29 +2,32 @@
 <html>
 
 <head>
-    <title>anglular app</title>
-    <meta charset="utf-8" />
+  <title>anglular app</title>
+  <meta charset="utf-8" />
 </head>
 
 <body>
-    <my-app>loading..</my-app>
+  <app>loading..</app>
 
-    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-    <script src="node_modules/systemjs/dist/system.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script src="node_modules/typescript/lib/typescript.js"></script>
+  <script src="node_modules/systemjs/dist/system.js"></script>
 
-    <script>
-        System.config({
+  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+  <script src="node_modules/rxjs/bundles/Rx.js"></script>
+  <script src="node_modules/angular2/bundles/angular2.min.js"></script>
+
+  <script>
+    System.config({
+          transpiler: 'typescript',
             packages: {        
-                built: {
-                    format: 'register',
-                    defaultExtension: 'js'
+                app: {
+                    format: 'esm',
+                    defaultExtension: 'ts'
                 }
             }
         });
-        System.import('built/boot').then(null, console.error.bind(console));
-    </script>
+    System.import('./app/app').catch(console.error.bind(console));
+  </script>
 </body>
 
 </html>
