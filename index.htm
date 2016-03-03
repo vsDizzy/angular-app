@@ -18,15 +18,15 @@
 
   <script>
     System.config({
-          transpiler: 'typescript',
-            packages: {        
-                app: {
-                    format: 'esm',
-                    defaultExtension: 'ts'
-                }
-            }
-        });
-    System.import('./app/app').catch(console.error.bind(console));
+      transpiler: 'typescript',
+      packages: {        
+        app: {
+          format: 'esm',
+          defaultExtension: 'ts'
+        }
+      }
+    });
+    System.import('./app/boot').catch(console.error.bind(console));
   </script>
 </body>
 
