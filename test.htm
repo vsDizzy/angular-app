@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Test</title>
+
+  <link rel="shortcut icon" type="image/png" href="node_modules/jasmine-core/images/jasmine_favicon.png " />
+  <link rel="stylesheet" type="text/css" href="node_modules/jasmine-core/lib/jasmine-core/jasmine.css " />
+</head>
+
+<body>
+  <script type="text/javascript" src="node_modules/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+  <script type="text/javascript" src="node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+  <script type="text/javascript" src="node_modules/jasmine-core/lib/jasmine-core/boot.js"></script>
+
+  <script src="node_modules/typescript/lib/typescript.js"></script>
+  <script src="node_modules/systemjs/dist/system.js"></script>
+
+  <script>
+    System.config({
+      transpiler: 'typescript',
+      typescriptOptions: {
+        emitDecoratorMetadata: true,
+        experimentalDecorators: true
+      },
+      packages: {        
+        app: {
+          format: 'esm',
+          defaultExtension: 'ts'
+        }
+      }
+    });
+    Promise.all([
+      System.import('./app/app.spec'),
+    ]).then(window.onload, console.error.bind(console));
+  </script>
+</body>
+
+</html>
