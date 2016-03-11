@@ -1,6 +1,6 @@
 # Stub template for Angular 2 app.
 
-Tests - Jamine.
+Tests - Jasmine.
 
 Usage:
 
